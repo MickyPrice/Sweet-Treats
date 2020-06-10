@@ -1,0 +1,22 @@
+[
+  {
+    "name": "🍦 Ice Cream",
+    "slug": "ice-cream",
+    "id": 0
+  },
+  {
+    "name": "🥤 Soft Drinks",
+    "slug": "soft-drinks",
+    "id": 1
+  },
+  {
+    "name": "🍫 Chocolate",
+    "slug": "chocolate",
+    "id": 2
+  },
+  {
+    "name": "🧸 Gummy",
+    "slug": "gummy",
+    "id": 3
+  }
+]

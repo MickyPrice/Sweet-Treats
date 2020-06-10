@@ -1,0 +1,8 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+.font-heading {
+  font-family: 'Pacifico', cursive;
+}

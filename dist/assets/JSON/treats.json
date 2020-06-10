@@ -1,0 +1,111 @@
+[
+  {
+    "name": "Strawberry Cone",
+    "price": 3.00,
+    "tags": ["Dairy"],
+    "image": "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f",
+    "categoryId": 0
+  },
+  {
+    "name": "Vanilla Sprinkles Cup",
+    "price": 4.60,
+    "tags": ["Dairy"],
+    "image": "https://images.unsplash.com/photo-1578845181898-dc189209a0fa",
+    "categoryId": 0
+  },
+  {
+    "name": "Pistachio Cone",
+    "price": 3.10,
+    "tags": ["Dairy"],
+    "image": "https://images.unsplash.com/photo-1529688499411-262f191fe29e",
+    "categoryId": 0
+  },
+  {
+    "name": "Mango Passionfruit Sorbet",
+    "price": 4.30,
+    "image": "https://images.unsplash.com/photo-1529790912688-db5fec227b5a",
+    "tags": ["Dairy Free", "Sorbet"],
+    "categoryId": 0
+  },
+  {
+    "name": "Salted Caramel Cone",
+    "price": 3.20,
+    "image": "https://images.unsplash.com/photo-1477505982272-ead89926a577",
+    "tags": ["Dairy"],
+    "categoryId": 0
+  },
+
+  {
+    "name": "Sour Gummy Worms",
+    "price": 2.50,
+    "image": "https://images.unsplash.com/photo-1516747773440-e114ee0d3c07",
+    "tags": ["Gummy", "Sour"],
+    "categoryId": 3
+  },
+  {
+    "name": "Gummy Bears",
+    "price": 2.30,
+    "image": "https://images.unsplash.com/photo-1547097465-21d286cfd973",
+    "tags": ["Gummy"],
+    "categoryId": 3
+  },
+  {
+    "name": "Gummy Worms",
+    "price": 2.20,
+    "image": "https://images.unsplash.com/photo-1533602747409-1f3dea118ac8",
+    "tags": ["Gummy"],
+    "categoryId": 3
+  },
+
+  {
+    "name": "Choc Truffels",
+    "price": 6.20,
+    "image": "https://images.unsplash.com/photo-1549007994-cb92caebd54b",
+    "tags": ["Dairy"],
+    "categoryId": 2
+  },
+  {
+    "name": "Milk Chocolate",
+    "price": 4.20,
+    "image": "https://images.unsplash.com/photo-1522249341405-3871994ac062",
+    "tags": ["Dairy"],
+    "categoryId": 2
+  },
+  {
+    "name": "Dark Chocolate",
+    "price": 4.60,
+    "image": "https://images.unsplash.com/photo-1576741048086-6707c5e0c613",
+    "tags": ["Dairy"],
+    "categoryId": 2
+  },
+  {
+    "name": "White Chocolate",
+    "price": 4.20,
+    "image": "https://images.unsplash.com/photo-1548907040-4baa42d10919",
+    "tags": ["Dairy"],
+    "categoryId": 2
+  },
+
+
+  {
+    "name": "Coca-Cola",
+    "price": 4.30,
+    "image": "https://images.unsplash.com/photo-1527960392543-80cd0fa46382",
+    "tags": [],
+    "categoryId": 1
+  },
+  {
+    "name": "Ginger Beer",
+    "price": 4.40,
+    "image": "https://images.unsplash.com/photo-1556030366-f4ec30b98e23",
+    "tags": [],
+    "categoryId": 1
+  },
+  {
+    "name": "Tonic Water",
+    "price": 4.10,
+    "image": "https://images.unsplash.com/photo-1581006855389-c17d881f3baf",
+    "tags": [],
+    "categoryId": 1
+  }
+]
