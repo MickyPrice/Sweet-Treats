@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="./assets/CSS/main.css">
     <link rel="stylesheet" href="./assets/CSS/tailwind.css">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="./assets/JS/jQuery-3.5.1.js" charset="utf-8"></script>
     <script src="./assets/JS/app.js" charset="utf-8"></script>
   </head>
   <body class="bg-gray-200">
-
     <div class="fixed inset-0 z-30 modal-bg bg-gray-200" id="event">
       <h2 class="font-heading text-6xl text-pink-500 text-center mt-16">Sweat Treats Co.</h2>
       <div class="rounded-lg bg-white p-8 modal mt-4 container mx-auto shadow-xl flex">
@@ -21,7 +21,7 @@
           <span class="modal-emoji block absolute" id="event-form-candy" style="font-size: 20vw;transform: translate(30%, -50%);top:50%">🍦</span>
         </div>
         <div class="w-1/2">
-          <h3 class="text-3xl text-black leading-none mb-4">Please tell us about your event</h3>
+          <h3 class="text-3xl text-black leading-none mb-4">Please tell us about  your event</h3>
           <form id="event-form">
             <label for="event-name">Event Name</label>
             <input required class="p-2 rounded border block block w-full mb-4 shadow mt-1" type="text" name="name" placeholder="Willy Wonka’s Work Do" id="event-name">
@@ -41,32 +41,15 @@
 
     <h1 class="font-heading text-6xl text-pink-500 text-center mt-16">Sweat Treats Co.</h1>
 
-    <div class="mx-auto container">
+    <div class="mx-auto container pb-16">
 
       <section class="bg-pink-100 p-8 shadow-xl rounded-lg mt-16">
         <p class="text-black"><span class="font-bold">FOR: </span> <span id="for"></span></p>
         <p class="text-black mt-2"><span class="font-bold">Est. No. Of Attendees: </span> <span id="attendees"></span></p>
       </section>
 
-      <section class="mt-16" id="treats-list">
-        <h2 class="font-heading text-5xl text-pink-500 mb-8">Ice Cream</h2>
-
-        <button type="button" class="mb-6 relative flex text-left rounded-lg shadow-xl bg-white block w-full overflow-hidden">
-          <div class="w-2/12">
-            <img src="https://images.unsplash.com/photo-1578845181898-dc189209a0fa" alt="" class="w-full h-32 object-fit object-cover">
-          </div>
-          <div class="w-5/6 p-4">
-            <h4 class="font-bold text-2xl">Vanilla Sprinkles Cup</h4>
-            <p class="text-black text-lg"><span class="font-bold">Cost:</span> $3.40</p>
-            <span class="block text-pink-600 hover:text-pink-400 transition duration-200 ease-in-out">Get Quote</span>
-            <div class="tags absolute bottom-0 right-0 px-6 pb-2">
-              <span class="text-gray-500 ml-3">Dairy</span>
-              <span class="text-gray-500 ml-3">Gluten Free</span>
-            </div>
-          </div>
-        </button>
-
-
+      <h2 class="font-heading mt-16 text-5xl text-pink-500 mb-8" id="selected-category"></h2>
+      <section class="" id="treats-list">
       </section>
 
     </div>
