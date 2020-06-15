@@ -8,19 +8,12 @@ var event = {
   }
 }
 
-
+// Function to get information from a JSON file
 function getJSONFileResults(filename) {
   return $.getJSON(`./assets/JSON/${filename}.json`);
 }
 
-function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-
+// Create the HTML for a treat in the list
 function createTreatHTML(treat) {
   var tags = "";
   for (var i = 0; i < treat.tags.length; i++) {
@@ -29,9 +22,9 @@ function createTreatHTML(treat) {
   }
 
   var element = `
-  <button data-treatobject='${JSON.stringify(treat)}'  type="button" class="treat mb-6 relative flex text-left rounded-lg shadow-xl bg-white block w-full overflow-hidden">
+  <button data-treat-id="${treat.id}" type="button" class="treat mb-6 relative flex text-left rounded-lg shadow-xl bg-white block w-full overflow-hidden">
     <div class="w-2/12">
-      <img src="${treat.image}" alt="" class="w-full h-32 object-fit object-cover">
+      <img loading="lazy" src="${treat.image}" alt="" class="w-full h-32 object-fit object-cover">
     </div>
     <div class="w-5/6 p-4">
       <h4 class="font-bold text-2xl">${treat.name}</h4>
@@ -47,7 +40,7 @@ function createTreatHTML(treat) {
   return element;
 }
 
-
+// Put all treats in a category into the HTML
 function getTreatsWithCategory(categoryId=-1) {
   if (categoryId === -1) {
     getJSONFileResults("treats").done(function(data) {
@@ -69,21 +62,101 @@ function getTreatsWithCategory(categoryId=-1) {
       }
 
       $("#treats-list").append(html);
+
+      addTreatClickListeners();
+    })
+    .fail(function(e) {
+      console.log(e);
     });
   }
 }
 
+// Print the event data to the page
 function showEventData() {
   $("#for").text(event.name);
   $("#attendees").text(event.attendees);
-  $("#selected-category").text(event.category.name);
 }
 
+// Triggered when the form is submitted
 function submitEventForm() {
   event.name = $('#event-form #event-name').val();
   event.attendees = parseInt($('#event-form #event-attendees').val());
-  event.category.id = parseInt($("#event-form #event-category").val());
 
+  setTreatCategory(parseInt($("#event-form #event-category").val()));
+
+  $("#event").remove();
+}
+
+// Set up the evrent form (dd listeners, put categories into it)
+function setupEventForm() {
+  $("#event-form").on('submit', function(event) {
+    event.preventDefault();
+    submitEventForm();
+  });
+
+  $("#event-form input").on('input', function(event) { // Make emoji randomly change when fields are typed in
+    var emojis = ['🍬','🍡','🍯','🍩','🧁','🍭','🍰','🎂','🍨','🍫','🍧','🍦'];
+    $("#event-form-candy").text(emojis[Math.floor(Math.random() * Math.floor(emojis.length))]);
+  });
+}
+
+// Create the HTML for the treat popup and add it to page
+function createTreatPopup(treat) {
+
+  console.log(treat);
+
+  var totalprice = (treat.price * event.attendees).toFixed(2);
+
+  $('.popup').remove();
+
+  var element = `
+      <div class="fixed inset-0 z-30 modal-bg popup pb-32 overflow-y-auto" id="quote" style="background-color: #99999966">
+        <button onclick="$('#quote').remove()" class="text-6xl fixed top-0 right-0 p-2 text-pink-600">&times;</button>
+        <h2 class="rounded-lg bg-white p-8 modal mt-4 container mx-auto shadow-xl font-heading text-6xl text-pink-500 text-center mt-16">${treat.name}</h2>
+        <div class="overflow-hidden rounded-lg bg-white modal mt-4 container mx-auto shadow-xl flex" id="quote-inner">
+          <div class="w-1/3 text-center relative bg-center bg-cover" style="background-image: url('${treat.image}')"></div>
+          <div class="w-2/3 px-16 py-32">
+            <h3 class="text-3xl text-black leading-none mb-6 text-pink-500">Quote for ${event.name}</h3>
+            <p>${treat.name} for ${event.attendees} attendees</p>
+            <p class="font-bold">Total Price: $${totalprice}</p>
+          </div>
+        </div>
+      </div>`;
+
+  $("body").append(element);
+
+  $('#quote').on('click', function(e) {
+    if(e.target.id == "quote"){
+     $(this).remove();
+   }
+  });
+}
+
+// Add the click listeners to each treat (To later open the popup)
+function addTreatClickListeners() {
+  $(".treat").on('click', function(e) {
+    showTreatInfoQuote($(this).data("treat-id"));
+  });
+}
+
+// Find a treat in the database that matches the ID selected and open a popup for it
+function showTreatInfoQuote(id) {
+  getJSONFileResults("treats").done(function(data) {
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].id === id) {
+        console.log(data[i]);
+        createTreatPopup(data[i]);
+      }
+    }
+  })
+  .fail(function(error) {
+    alert("An error occurred");
+  });
+}
+
+// Update the current selected treat category
+function setTreatCategory(id) {
+  event.category.id = id;
   getJSONFileResults("categories").done(function(data) {
     for (var i = 0; i < data.length; i++) {
       if (data[i].id == event.category.id) {
@@ -94,58 +167,35 @@ function submitEventForm() {
 
     showEventData();
     getTreatsWithCategory(event.category.id);
-    $("#event").remove();
   });
 }
 
+// Create the HTML code for a category button
+function createCategoryButton(name, id, slug) {
+  return `<button type="button" data-category-id="${id}" class="category-nav-button mr-6 block mt-2 bg-pink-500 hover:bg-pink-600 rounded-lg px-6 py-2 text-white text-xl">${name}</button>`
+}
 
-function setupEventForm() {
+// Create all the category buttons and add them to the page
+function createCategoryButtons() { // FIX ME
+  var html = "";
   getJSONFileResults("categories").done(function(data) {
-    const categorySelect = $("#event-category");
-    var options = "";
     for (var i = 0; i < data.length; i++) {
-      options += `<option value="${data[i].id}">${data[i].name}</option>`;
+      html += createCategoryButton(data[i].name, data[i].id, data[i].slug);
     }
-    categorySelect.append(options);
-  });
+    $("#category-nav").append(html);
 
-  $("#event-form").on('submit', function(event) {
-    event.preventDefault();
-    submitEventForm();
-  });
-
-  $("#event-form input").on('keydown', function(event) { // Make emoji randomly change when fields are typed in
-    var emojis = ['🍬','🍡','🍯','🍩','🧁','🍭','🍰','🎂','🍨','🍫','🍧','🍦'];
-    $("#event-form-candy").text(emojis[Math.floor(Math.random() * Math.floor(emojis.length))]);
+    addCategortButtonListeners();
   });
 }
 
-function createTreatPopup(treat) {
-
-  var totalprice = treat.price * event.attendees;
-
-  $('.popup').remove();
-
-  var element = `
-      <div class="fixed inset-0 z-30 modal-bg bg-gray-200 popup" id="event">
-        <h2 class="font-heading text-6xl text-pink-500 text-center mt-16">${treat.name}</h2>
-        <div class="rounded-lg bg-white p-8 modal mt-4 container mx-auto shadow-xl flex">
-          <div class="w-1/2 text-center relative">
-            <img src="${treat.image}">
-          </div>
-          <div class="w-1/2">
-            <h3 class="text-3xl text-black leading-none mb-4">Quote for ${event.name}</h3>
-            <p class="${treat.name} for ${event.attendees} attendees"></p>
-            <p>Total Price: ${totalprice}</p>
-          </div>
-        </div>
-      </div>`;
-
-  $("body").append(element);
+function addCategortButtonListeners() {
+  $(".category-nav-button").on('click', function(e) {
+    setTreatCategory($(e.target).data("category-id"));
+  });
 }
 
-
-
+// When page loads
 $(function() {
   setupEventForm();
-})
+  createCategoryButtons();
+});

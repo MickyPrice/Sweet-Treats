@@ -14,6 +14,7 @@
     <script src="./assets/JS/app.js" charset="utf-8"></script>
   </head>
   <body class="bg-gray-200">
+
     <div class="fixed inset-0 z-30 modal-bg bg-gray-200" id="event">
       <h2 class="font-heading text-6xl text-pink-500 text-center mt-16">Sweat Treats Co.</h2>
       <div class="rounded-lg bg-white p-8 modal mt-4 container mx-auto shadow-xl flex">
@@ -28,10 +29,7 @@
 
             <label for="event-attendees">Estimated No. Of Attendees</label>
             <input required class="p-2 rounded border block block w-full mb-4 shadow mt-1" type="number" name="attendees" placeholder="600" id="event-attendees">
-
-            <label for="event-category">Treat Category</label>
-            <select required class="p-2 rounded border block block w-full mb-4 shadow mt-1" name="category" id="event-category"> </select>
-
+            
             <button type="submit" class="p-2 rounded text-green-100 bg-green-600 shadow mt-8 block w-full">View Treats</button>
           </form>
         </div>
@@ -47,6 +45,9 @@
         <p class="text-black"><span class="font-bold">FOR: </span> <span id="for"></span></p>
         <p class="text-black mt-2"><span class="font-bold">Est. No. Of Attendees: </span> <span id="attendees"></span></p>
       </section>
+
+      <div class="mt-16 flex flex-wrap" id="category-nav">
+      </div>
 
       <h2 class="font-heading mt-16 text-5xl text-pink-500 mb-8" id="selected-category"></h2>
       <section class="" id="treats-list">

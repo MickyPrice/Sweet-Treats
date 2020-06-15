@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "name": "Strawberry Cone",
     "price": 3.00,
     "tags": ["Dairy"],
@@ -7,6 +8,7 @@
     "categoryId": 0
   },
   {
+    "id": 1,
     "name": "Vanilla Sprinkles Cup",
     "price": 4.60,
     "tags": ["Dairy"],
@@ -14,6 +16,7 @@
     "categoryId": 0
   },
   {
+    "id": 2,
     "name": "Pistachio Cone",
     "price": 3.10,
     "tags": ["Dairy"],
@@ -21,6 +24,7 @@
     "categoryId": 0
   },
   {
+    "id": 3,
     "name": "Mango Passionfruit Sorbet",
     "price": 4.30,
     "image": "https://images.unsplash.com/photo-1529790912688-db5fec227b5a",
@@ -28,6 +32,7 @@
     "categoryId": 0
   },
   {
+    "id": 4,
     "name": "Salted Caramel Cone",
     "price": 3.20,
     "image": "https://images.unsplash.com/photo-1477505982272-ead89926a577",
@@ -36,6 +41,7 @@
   },
 
   {
+    "id": 5,
     "name": "Sour Gummy Worms",
     "price": 2.50,
     "image": "https://images.unsplash.com/photo-1516747773440-e114ee0d3c07",
@@ -43,6 +49,7 @@
     "categoryId": 3
   },
   {
+    "id": 6,
     "name": "Gummy Bears",
     "price": 2.30,
     "image": "https://images.unsplash.com/photo-1547097465-21d286cfd973",
@@ -50,6 +57,7 @@
     "categoryId": 3
   },
   {
+    "id": 7,
     "name": "Gummy Worms",
     "price": 2.20,
     "image": "https://images.unsplash.com/photo-1533602747409-1f3dea118ac8",
@@ -58,6 +66,7 @@
   },
 
   {
+    "id": 8,
     "name": "Choc Truffels",
     "price": 6.20,
     "image": "https://images.unsplash.com/photo-1549007994-cb92caebd54b",
@@ -65,6 +74,7 @@
     "categoryId": 2
   },
   {
+    "id": 9,
     "name": "Milk Chocolate",
     "price": 4.20,
     "image": "https://images.unsplash.com/photo-1522249341405-3871994ac062",
@@ -72,6 +82,7 @@
     "categoryId": 2
   },
   {
+    "id": 10,
     "name": "Dark Chocolate",
     "price": 4.60,
     "image": "https://images.unsplash.com/photo-1576741048086-6707c5e0c613",
@@ -79,6 +90,7 @@
     "categoryId": 2
   },
   {
+    "id": 11,
     "name": "White Chocolate",
     "price": 4.20,
     "image": "https://images.unsplash.com/photo-1548907040-4baa42d10919",
@@ -88,6 +100,7 @@
 
 
   {
+    "id": 12,
     "name": "Coca-Cola",
     "price": 4.30,
     "image": "https://images.unsplash.com/photo-1527960392543-80cd0fa46382",
@@ -95,6 +108,7 @@
     "categoryId": 1
   },
   {
+    "id": 13,
     "name": "Ginger Beer",
     "price": 4.40,
     "image": "https://images.unsplash.com/photo-1556030366-f4ec30b98e23",
@@ -102,6 +116,7 @@
     "categoryId": 1
   },
   {
+    "id": 14,
     "name": "Tonic Water",
     "price": 4.10,
     "image": "https://images.unsplash.com/photo-1581006855389-c17d881f3baf",
