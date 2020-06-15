@@ -64,9 +64,6 @@ function getTreatsWithCategory(categoryId=-1) {
       $("#treats-list").append(html);
 
       addTreatClickListeners();
-    })
-    .fail(function(e) {
-      console.log(e);
     });
   }
 }
@@ -82,7 +79,7 @@ function submitEventForm() {
   event.name = $('#event-form #event-name').val();
   event.attendees = parseInt($('#event-form #event-attendees').val());
 
-  setTreatCategory(parseInt($("#event-form #event-category").val()));
+  setTreatCategory(0);
 
   $("#event").remove();
 }
@@ -102,9 +99,6 @@ function setupEventForm() {
 
 // Create the HTML for the treat popup and add it to page
 function createTreatPopup(treat) {
-
-  console.log(treat);
-
   var totalprice = (treat.price * event.attendees).toFixed(2);
 
   $('.popup').remove();
@@ -144,7 +138,6 @@ function showTreatInfoQuote(id) {
   getJSONFileResults("treats").done(function(data) {
     for (var i = 0; i < data.length; i++) {
       if (data[i].id === id) {
-        console.log(data[i]);
         createTreatPopup(data[i]);
       }
     }
@@ -166,13 +159,24 @@ function setTreatCategory(id) {
     }
 
     showEventData();
+
+    $("#selected-category").text(event.category.name);
+
+    for (var i = 0; i < $(".category-nav-button").length; i++) {
+      if (parseInt($(".category-nav-button")[i].getAttribute("data-category-id")) ==  event.category.id) {
+        $(".category-nav-button")[i].classList.add('bg-pink-700');
+      } else {
+        $(".category-nav-button")[i].classList.remove('bg-pink-700');
+      }
+    }
+
     getTreatsWithCategory(event.category.id);
   });
 }
 
 // Create the HTML code for a category button
 function createCategoryButton(name, id, slug) {
-  return `<button type="button" data-category-id="${id}" class="category-nav-button mr-6 block mt-2 bg-pink-500 hover:bg-pink-600 rounded-lg px-6 py-2 text-white text-xl">${name}</button>`
+  return `<button type="button" data-category-id="${id}" class=" category-nav-button mr-6 block mt-2 bg-pink-500 hover:bg-pink-600 rounded-lg px-6 py-2 text-white text-xl">${name}</button>`
 }
 
 // Create all the category buttons and add them to the page
