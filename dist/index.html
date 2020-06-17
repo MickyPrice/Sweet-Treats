@@ -17,11 +17,9 @@
 
     <div class="fixed inset-0 z-30 modal-bg bg-gray-200" id="event">
       <h2 class="font-heading text-6xl text-pink-500 text-center mt-16">Sweat Treats Co.</h2>
-      <div class="rounded-lg bg-white p-8 modal mt-4 container mx-auto shadow-xl flex">
-        <div class="w-1/2 text-center relative">
-          <span class="modal-emoji block absolute" id="event-form-candy" style="font-size: 20vw;transform: translate(30%, -50%);top:50%">🍦</span>
-        </div>
-        <div class="w-1/2">
+      <div class="rounded-lg bg-white overflow-hidden modal mt-4 container mx-auto shadow-xl flex">
+
+        <div class="w-1/2 p-8">
           <h3 class="text-3xl text-black leading-none mb-4">Please tell us about  your event</h3>
           <form id="event-form">
             <label for="event-name">Event Name</label>
@@ -29,10 +27,15 @@
 
             <label for="event-attendees">Estimated No. Of Attendees</label>
             <input required class="p-2 rounded border block block w-full mb-4 shadow mt-1" type="number" name="attendees" placeholder="600" id="event-attendees">
-            
+
             <button type="submit" class="p-2 rounded text-green-100 bg-green-600 shadow mt-8 block w-full">View Treats</button>
           </form>
         </div>
+
+        <div class="w-1/2 relative" id="confetti-container">
+          <!-- <span class="modal-emoji block absolute" id="event-form-candy" style="font-size: 20vw;transform: translate(30%, -50%);top:50%">🍦</span> -->
+        </div>
+
       </div>
     </div>
 

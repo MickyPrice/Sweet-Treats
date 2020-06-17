@@ -92,8 +92,9 @@ function setupEventForm() {
   });
 
   $("#event-form input").on('input', function(event) { // Make emoji randomly change when fields are typed in
-    var emojis = ['🍬','🍡','🍯','🍩','🧁','🍭','🍰','🎂','🍨','🍫','🍧','🍦'];
-    $("#event-form-candy").text(emojis[Math.floor(Math.random() * Math.floor(emojis.length))]);
+    // var emojis = ['🍬','🍡','🍯','🍩','🧁','🍭','🍰','🎂','🍨','🍫','🍧','🍦'];
+    // $("#event-form-candy").text(emojis[Math.floor(Math.random() * Math.floor(emojis.length))]);
+    createConfettiContainer();
   });
 }
 
@@ -198,8 +199,66 @@ function addCategortButtonListeners() {
   });
 }
 
+
+
+// Confetti Cascade
+function createConfettiContainer() {
+  var confettiContainer = document.createElement("div");
+  $(confettiContainer).addClass("absolute inset-0 flex overflow-hidden");
+  populateConfettiContainerWithConfetti(confettiContainer);
+  $("#confetti-container").append(confettiContainer);
+
+  setTimeout(function () {
+    $(confettiContainer).remove();
+  }, 1000);
+}
+
+function populateConfettiContainerWithConfetti(container) {
+
+  var emojis = ['🍬','🍡','🍯','🍩','🧁','🍭','🍰','🎂','🍨','🍫','🍧','🍦'];
+
+  for (var i = 0; i < Math.floor(Math.random() * (20 - 15) ) + 15; i++) {
+    var confetti = document.createElement('span');
+    $(confetti).css({
+      transition: "transform 1s linear"
+    });
+
+    $(confetti).text(emojis[Math.floor(Math.random() * Math.floor(emojis.length))]);
+
+    zeroConfettiFallAndRandom(confetti);
+    makeConfettiRandomFallAndRotation(confetti);
+
+    container.append(confetti);
+  }
+}
+
+function zeroConfettiFallAndRandom(confetti) {
+  $(confetti).css({
+    transform: "translateY(-22px)"
+  });
+}
+
+function makeConfettiRandomFallAndRotation(confetti) {
+  setTimeout(function () {
+    var marginLeft = Math.floor(Math.random() * (90 - 0) ) + 0;
+    var textSize = Math.floor(Math.random() * (30 - 10) ) + 10;
+    var depth = Math.floor(Math.random() * (350 - 400) ) + 400;
+    $(confetti).css({
+      transform: `translateY(${depth}px)`,
+      marginLeft:  marginLeft,
+      fontSize: textSize
+    });
+  }, 1);
+}
+
+
+
+
 // When page loads
 $(function() {
   setupEventForm();
   createCategoryButtons();
+  // setInterval(function () {
+  //   createConfettiContainer();
+  // }, 100);
 });
